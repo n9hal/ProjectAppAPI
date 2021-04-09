@@ -1,0 +1,38 @@
+body{
+    font-family:'Yu Gothic UI','arial','sans-serif';
+    color: #000;
+}
+.div{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    align-items: center;
+    margin-top: 100px;
+}
+.h1{
+    align-content: center;
+    font-weight: bold;
+}
+.txt{
+    width: 400px;
+    height: 50px;
+    border-radius: 15px 5px;
+    text-align: center;
+}
+.btn{
+    width: 100px;
+    height: 25px;
+    border: none;
+    background-color: #00574B;
+    color: #fff;
+    transition:  ease-out 0.3s;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    border:3px solid #00574B;
+}
+
+.btn:hover{
+    cursor: pointer;
+
+}
