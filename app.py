@@ -11,7 +11,6 @@ app= Flask(__name__)
 CORS(app)
 app= flask.Flask(__name__,template_folder='templates')
 
-
 path="D:\Codes\Python_Codes\env\model_modified.pkl"
 with open(path,'rb') as handle:
     model=pickle.load(handle)
