@@ -20,22 +20,6 @@ with open(path,'rb') as handle:
 def main():
     return render_template('index.html')
 
-@app.route('/checknews',methods=['POST','GET'])
-def checknews():
-    url = request.get_data(as_text=True)[5:]
-    url = urllib.parse.unquote(url)
-    article = Article(str(url))
-    article.download()
-    article.parse()
-    article.nlp()
-    news = article.summary
-    pred = model.predict([news])
-    if pred[0] == 1:
-        result = "TRUE"
-    else:
-        result = "FALSE"
-    return render_template('result.html'.format(result))
-
 @app.route('/predict',methods=['POST','GET'])
 def predict():
     url = request.form['url']
@@ -57,7 +41,21 @@ def predict():
     }
     return (str(result))
 
-
+@app.route('/checknews',methods=['POST','GET'])
+def checknews():
+    url = request.get_data(as_text=True)[5:]
+    url = urllib.parse.unquote(url)
+    article = Article(str(url))
+    article.download()
+    article.parse()
+    article.nlp()
+    news = article.summary
+    pred = model.predict([news])
+    if pred[0] == 1:
+        result = "TRUE"
+    else:
+        result = "FALSE"
+    return render_template('result.html'.format(result))
 
 if __name__=="__main__":
     port =int(os.environ.get('PORT',5000))
